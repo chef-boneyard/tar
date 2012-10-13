@@ -1,14 +1,19 @@
 DESCRIPTION
 ===========
 
-Installs tar and a resource for source package compilation.
+Installs tar and two resources for managing remote tar files.
+`tar_package` handles remote source package compilation.
+`tar_extract` handles retrieving remote tar files and extracting
+them locally.
 
 LICENSE AND AUTHOR
 ==================
 
 Author:: Nathan L Smith (<nathan@cramerdev.com>)
+Author:: George Miranda (<gmiranda@opscode.com>)
 
 Copyright 2011, Cramer Development, Inc.
+Copyright 2011, Opscode, Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -25,21 +30,33 @@ limitations under the License.
 Resources/Providers
 ===================
 
-A `tar_package` LWRP provides an easy way to download remote files and compile and install them.
+A `tar_package` LWRP provides an easy way to download remote files and compile and install them.  This only works for the most basic Autoconf programs that can do `./configure && make && make install`.
 
-This only works for the most basic Autoconf programs that can do `./configure && make && make install`.
+A `tar_extract` LWRP provides an easy way to download remote tar files and extract them to a local directory.
 
 # Actions
 
+`tar_package`
 - :install: Installs the package
+
+`tar_extract`
+- :extract: Extracts the tar file
 
 # Attribute Parameters
 
+`tar_package`
 - source: name attribute. The source remote URL.
 - prefix: Directory to be used as the `--prefix` configure flag.
 - source\_directory: Directory to which source files are download.
 - creates: A file this command creates - if the file exists, the command will not be run.
 - configure\_flags: Array of additional flags to be passed to `./configure`.
+
+`tar_extract`
+- source: name attribute. The source remote URL.
+- target\_dir: Directory to extract into, e.g. tar xzf -C (target_dir)
+- download\_dir: Directory to which tarball is downloaded (defaults to chef cache).
+- creates: A file this command creates - if the file exists, the command will not be run.
+- tar\_flags: Array of additional flags to be passed to tar xzf command.
 
 # Example
 
@@ -49,3 +66,12 @@ This only works for the most basic Autoconf programs that can do `./configure &&
     end
 
 This will download, compile, and install the package from the given URL and install it into /usr/local.
+
+    tar_extract 'http://dev.mycoderepo.com/artifacts/mycode-1.2.3.tar.gz' do
+      target_dir '/opt/myapp/mycode'
+      creates '/opt/myapp/mycode/lib'
+      tar_flags [ '-P', '--strip-components 1' ]
+    end
+
+This will download the tarball to cache, extract the contents to /opt/myapp/mycode, use the file '/opt/myapp/mycode/bin' to determine idempotency, and pass both '-P' and '--strip-components 1' flags to the tar xzf command.
+

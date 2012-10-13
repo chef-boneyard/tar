@@ -21,11 +21,11 @@
 
 actions :install
 
-attribute :source, :name_attribute => true, :kind_of => String
-attribute :prefix, :kind_of => String
+attribute :source,           :kind_of => String, :name_attribute => true
+attribute :prefix,           :kind_of => String
 attribute :source_directory, :kind_of => String, :default => '/usr/local/src'
-attribute :creates, :kind_of => String
-attribute :configure_flags, :kind_of => Array, :default => []
+attribute :creates,          :kind_of => String
+attribute :configure_flags,  :kind_of => Array,  :default => []
 
 # Make :install the default action
 def initialize(*args)
