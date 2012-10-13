@@ -3,8 +3,10 @@
 # Resource:: package
 #
 # Author:: Nathan L Smith (<nathan@cramerdev.com>)
+# Author:: George Miranda (<gmiranda@opscode.com>)
 #
 # Copyright 2011, Cramer Development, Inc.
+# Copyright 2012, Opscode, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,16 +21,12 @@
 # limitations under the License.
 #
 
-actions :install
+actions :extract
 
-attribute :source,           :kind_of => String, :name_attribute => true
-attribute :prefix,           :kind_of => String
-attribute :source_directory, :kind_of => String, :default => '/usr/local/src'
-attribute :creates,          :kind_of => String
-attribute :configure_flags,  :kind_of => Array,  :default => []
+attribute :source,       :kind_of => String, :name_attribute => true
+attribute :download_dir, :kind_of => String, :default => Chef::Config[:file_cache_path]
+attribute :target_dir,   :kind_of => String
+attribute :creates,      :kind_of => String
+attribute :tar_flags,    :kind_of => Array,  :default => []
 
-# Make :install the default action
-def initialize(*args)
-  super
-  @action = :install
-end
+default_action :extract
