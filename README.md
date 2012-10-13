@@ -10,9 +10,11 @@ LICENSE AND AUTHOR
 ==================
 
 Author:: Nathan L Smith (<nathan@cramerdev.com>)
+
 Author:: George Miranda (<gmiranda@opscode.com>)
 
 Copyright 2011, Cramer Development, Inc.
+
 Copyright 2011, Opscode, Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
