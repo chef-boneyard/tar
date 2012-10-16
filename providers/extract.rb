@@ -1,10 +1,12 @@
 #
 # Cookbook Name:: tar
-# Resource:: package
+# Provider:: extract
 #
 # Author:: Nathan L Smith (<nathan@cramerdev.com>)
+# Author:: George Miranda (<gmiranda@opscode.com>)
 #
 # Copyright 2011, Cramer Development, Inc.
+# Copyright 2012, Opscode, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,16 +21,21 @@
 # limitations under the License.
 #
 
-actions :install
+action :extract do
+  r = new_resource
+  basename = ::File.basename(r.name)
 
-attribute :source,           :kind_of => String, :name_attribute => true
-attribute :prefix,           :kind_of => String
-attribute :source_directory, :kind_of => String, :default => '/usr/local/src'
-attribute :creates,          :kind_of => String
-attribute :configure_flags,  :kind_of => Array,  :default => []
+  remote_file basename do
+    source r.name
+    path "#{r.download_dir}/#{basename}"
+    backup false
+    action :create_if_missing
+  end
 
-# Make :install the default action
-def initialize(*args)
-  super
-  @action = :install
+  execute "extract #{basename}" do
+    flags = "#{r.tar_flags ? r.tar_flags.join(' ') : '' }"
+    command "tar xfz #{r.download_dir}/#{basename} #{flags}"
+    cwd r.target_dir
+    creates r.creates
+  end
 end
