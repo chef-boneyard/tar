@@ -4,9 +4,11 @@
 #
 # Author:: Nathan L Smith (<nathan@cramerdev.com>)
 # Author:: George Miranda (<gmiranda@opscode.com>)
+# Author:: Mark Van de Vyver (<mark@@taqtiqa.com>)
 #
 # Copyright 2011, Cramer Development, Inc.
 # Copyright 2012, Opscode, Inc.
+# Copyright 2013, TAQTIQA LLC.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -24,18 +26,36 @@
 action :extract do
   r = new_resource
   basename = ::File.basename(r.name)
+  local_archive = "#{r.download_dir}/#{basename}"
 
+  # Pending resolution of: http://tickets.opscode.com/browse/CHEF-1367
+  # Related http://tickets.opscode.com/browse/CHEF-3291
   remote_file basename do
     source r.name
-    path "#{r.download_dir}/#{basename}"
+    path local_archive
     backup false
-    action :create_if_missing
+    action :nothing
+    group  r.group
+    owner  r.user
+    mode   r.mode
+  end
+
+  http_request "HEAD #{r.name}" do
+    message ""
+    url r.name
+    action :head
+    if ::File.exists?(local_archive)
+      headers "If-Modified-Since" => ::File.mtime(local_archive).httpdate
+    end
+    notifies :create, "remote_file[#{basename}]", :immediately
   end
 
   execute "extract #{basename}" do
     flags = "#{r.tar_flags ? r.tar_flags.join(' ') : '' }"
-    command "tar xfz #{r.download_dir}/#{basename} #{flags}"
+    command "tar xfz #{local_archive} #{flags}"
     cwd r.target_dir
     creates r.creates
+    group  r.group
+    user   r.user
   end
 end

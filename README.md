@@ -10,12 +10,12 @@ LICENSE AND AUTHOR
 ==================
 
 Author:: Nathan L Smith (<nathan@cramerdev.com>)
-
 Author:: George Miranda (<gmiranda@opscode.com>)
+Author:: Mark Van de Vyver (<mark@@taqtiqa.com>)
 
 Copyright 2011, Cramer Development, Inc.
-
 Copyright 2011, Opscode, Inc.
+Copyright 2013, TAQTIQA LLC.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -56,10 +56,11 @@ A `tar_extract` LWRP provides an easy way to download remote tar files and extra
 `tar_extract`
 - source: name attribute. The source remote URL.
 - target\_dir: Directory to extract into, e.g. tar xzf -C (target_dir)
-- download\_dir: Directory to which tarball is downloaded (defaults to chef cache).
+- download\_dir: Directory to which tarball is downloaded (defaults to chef cache which requires root `group` and `user`).
 - creates: A file this command creates - if the file exists, the command will not be run.
 - tar\_flags: Array of additional flags to be passed to tar xzf command.
-
+- group: Group name or group ID to extract the archive under. If set to non-root group, point to a `download_dir` the group has permission to access.
+- user: User name or user ID to extract the archive under. If set to non-root user, point to a `download_dir` the user has permission to access.
 # Example
 
     tar_package 'http://pgfoundry.org/frs/download.php/1446/pgpool-3.4.1.tar.gz' do
