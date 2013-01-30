@@ -1,12 +1,14 @@
 #
 # Cookbook Name:: tar
-# Resource:: package
+# Resource:: extract
 #
 # Author:: Nathan L Smith (<nathan@cramerdev.com>)
 # Author:: George Miranda (<gmiranda@opscode.com>)
+# Author:: Mark Van de Vyver (<mark@taqtiqa.com>)
 #
 # Copyright 2011, Cramer Development, Inc.
 # Copyright 2012, Opscode, Inc.
+# Copyright 2013, TAQTIQA LLC.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -24,9 +26,12 @@
 actions :extract
 
 attribute :source,       :kind_of => String, :name_attribute => true
-attribute :download_dir, :kind_of => String, :default => Chef::Config[:file_cache_path]
+attribute :download_dir, :kind_of => String, :default => Chef::Config[:file_backup_path]
+attribute :group,        :kind_of => String, :default => 'root'
+attribute :mode,         :kind_of => String, :default => '0755'
 attribute :target_dir,   :kind_of => String
 attribute :creates,      :kind_of => String
 attribute :tar_flags,    :kind_of => Array,  :default => []
+attribute :user,         :kind_of => String, :default => 'root'
 
 default_action :extract
