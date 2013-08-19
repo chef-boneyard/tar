@@ -39,7 +39,7 @@ action :install do
   end
 
   execute "compile & install #{dirname}" do
-    flags = (r.prefix ? "--prefix=#{r.prefix}" : '') + "#{r.configure_flags.join(' ')}"
+    flags = (r.prefix ? "--prefix=#{r.prefix}" : '') + r.configure_flags.join(' ')
     command "./configure --quiet #{flags} && make --quiet && make --quiet install"
     cwd "#{src_dir}/#{dirname}"
     creates r.creates
