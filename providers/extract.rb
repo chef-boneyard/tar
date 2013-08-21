@@ -51,7 +51,7 @@ action :extract do
   end
 
   execute "extract #{basename}" do
-    flags = "#{r.tar_flags ? r.tar_flags.join(' ') : '' }"
+    flags = r.tar_flags ? r.tar_flags.join(' ') : ''
     command "tar xfz #{local_archive} #{flags}"
     cwd r.target_dir
     creates r.creates
