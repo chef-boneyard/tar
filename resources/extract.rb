@@ -26,7 +26,7 @@
 actions :extract
 
 attribute :source,       :kind_of => String, :name_attribute => true
-attribute :headers,      :kind_of => String, :default => {}
+attribute :headers,      :kind_of => Hash,   :default => {}
 attribute :download_dir, :kind_of => String, :default => Chef::Config[:file_backup_path]
 attribute :group,        :kind_of => String, :default => 'root'
 attribute :mode,         :kind_of => String, :default => '0755'

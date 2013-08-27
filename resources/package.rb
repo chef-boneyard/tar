@@ -22,7 +22,7 @@
 actions :install
 
 attribute :source,           :kind_of => String, :name_attribute => true
-attribute :headers,          :kind_of => String, :default => {}
+attribute :headers,          :kind_of => Hash,   :default => {}
 attribute :prefix,           :kind_of => String
 attribute :source_directory, :kind_of => String, :default => '/usr/local/src'
 attribute :creates,          :kind_of => String
