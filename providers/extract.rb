@@ -28,26 +28,14 @@ action :extract do
   basename = ::File.basename(r.name)
   local_archive = "#{r.download_dir}/#{basename}"
 
-  # Pending resolution of: http://tickets.opscode.com/browse/CHEF-1367
-  # Related http://tickets.opscode.com/browse/CHEF-3291
   remote_file basename do
     source r.name
     path local_archive
     backup false
-    action :nothing
+    action :create
     group  r.group
     owner  r.user
     mode   r.mode
-  end
-
-  http_request "HEAD #{r.name}" do
-    message ""
-    url r.name
-    action :head
-    if ::File.exists?(local_archive)
-      headers "If-Modified-Since" => ::File.mtime(local_archive).httpdate
-    end
-    notifies :create, "remote_file[#{basename}]", :immediately
   end
 
   execute "extract #{basename}" do
