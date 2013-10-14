@@ -48,6 +48,7 @@ A `tar_extract` LWRP provides an easy way to download remote tar files and extra
 
 `tar_package`
 - source: name attribute. The source remote URL.
+- headers: request headers sent when downloading the file (for instance for authentication)
 - prefix: Directory to be used as the `--prefix` configure flag.
 - source\_directory: Directory to which source files are download.
 - creates: A file this command creates - if the file exists, the command will not be run.
@@ -55,6 +56,7 @@ A `tar_extract` LWRP provides an easy way to download remote tar files and extra
 
 `tar_extract`
 - source: name attribute. The source remote URL.
+- headers: request headers sent when downloading the file (for instance for authentication)
 - target\_dir: Directory to extract into, e.g. tar xzf -C (target_dir)
 - download\_dir: Directory to which tarball is downloaded (defaults to chef cache which requires root `group` and `user`).
 - creates: A file this command creates - if the file exists, the command will not be run.
