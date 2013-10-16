@@ -30,6 +30,7 @@ action :extract do
 
   remote_file basename do
     source r.name
+    headers r.headers
     path local_archive
     backup false
     action :create
