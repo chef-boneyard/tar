@@ -25,15 +25,15 @@
 
 actions :extract
 
-attribute :source,       :kind_of => String, :name_attribute => true
-attribute :headers,      :kind_of => Hash,   :default => {}
-attribute :download_dir, :kind_of => String, :default => Chef::Config[:file_backup_path]
-attribute :group,        :kind_of => String, :default => 'root'
-attribute :mode,         :kind_of => String, :default => '0755'
-attribute :target_dir,   :kind_of => String
-attribute :creates,      :kind_of => String
-attribute :compress_char,         :kind_of => String, :default => 'z'
-attribute :tar_flags,    :kind_of => Array,  :default => []
-attribute :user,         :kind_of => String, :default => 'root'
+attribute :source,         :kind_of => String, :name_attribute => true
+attribute :headers,        :kind_of => Hash,   :default => {}
+attribute :download_dir,   :kind_of => String, :default => Chef::Config[:file_backup_path]
+attribute :group,          :kind_of => String, :default => 'root'
+attribute :mode,           :kind_of => String, :default => '0755'
+attribute :target_dir,     :kind_of => String
+attribute :creates,        :kind_of => String
+attribute :compress_char,  :kind_of => String, :default => 'z'
+attribute :tar_flags,      :kind_of => Array,  :default => []
+attribute :user,           :kind_of => String, :default => 'root'
 
 default_action :extract
