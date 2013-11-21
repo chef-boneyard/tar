@@ -19,6 +19,8 @@
 # limitations under the License.
 #
 
+use_inline_resources if defined?(use_inline_resources)
+
 action :install do
   r = new_resource
   basename = ::File.basename(r.name)
