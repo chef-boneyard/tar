@@ -23,6 +23,8 @@
 # limitations under the License.
 #
 
+use_inline_resources if defined?(use_inline_resources)
+
 action :extract do
   r = new_resource
   basename = ::File.basename(r.name)
@@ -37,6 +39,7 @@ action :extract do
     group  r.group
     owner  r.user
     mode   r.mode
+    notifies :run, "execute[extract #{basename}]"
   end
 
   execute "extract #{basename}" do
