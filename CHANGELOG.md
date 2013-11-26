@@ -1,5 +1,11 @@
 # Tar Cookbook Changelog
 
+## v0.1.0 (2013-11-26)
+
+* Allow custom HTTP headers when downloading files
+* Allow the type of tar compression
+* Improve resource notifications
+
 ## v0.0.4 (2013-10-02)
 
 * Remove conditional download requests in favor of built-in functionality in Chef >= 11.6.0.
