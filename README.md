@@ -60,6 +60,7 @@ A `tar_extract` LWRP provides an easy way to download remote tar files and extra
 - target\_dir: Directory to extract into, e.g. tar xzf -C (target_dir)
 - download\_dir: Directory to which tarball is downloaded (defaults to chef cache which requires root `group` and `user`).
 - creates: A file this command creates - if the file exists, the command will not be run.
+- compress_char: Flag for compression type, such as `z` for `gzip`.  `man tar` for options.
 - tar\_flags: Array of additional flags to be passed to tar xzf command.
 - group: Group name or group ID to extract the archive under. If set to non-root group, point to a `download_dir` the group has permission to access.
 - user: User name or user ID to extract the archive under. If set to non-root user, point to a `download_dir` the user has permission to access.
