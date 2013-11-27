@@ -49,5 +49,6 @@ action :extract do
     creates r.creates
     group  r.group
     user   r.user
+    action (r.creates || r.not_if.any? || r.only_if.any? ? :run : :nothing)
   end
 end
