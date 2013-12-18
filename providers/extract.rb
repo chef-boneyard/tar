@@ -32,7 +32,9 @@ action :extract do
 
   remote_file basename do
     source r.name
-    headers r.headers
+    unless r.headers.nil?
+      headers r.headers
+    end 
     path local_archive
     backup false
     action :create
