@@ -30,6 +30,10 @@ action :extract do
   basename = ::File.basename(r.name)
   local_archive = "#{r.download_dir}/#{basename}"
 
+  directory r.download_dir do
+    recursive true
+  end
+
   remote_file basename do
     source r.name
     headers r.headers
