@@ -1,5 +1,12 @@
 # Tar Cookbook Changelog
 
+## v0.2.0 (2013-12-31)
+
+* Make `tar_extract` only run if needed
+* Fix missing space in command line prefix
+* Ensure `file_backup_path` exists on initial chef-client run
+* Only add headers if needed
+
 ## v0.1.0 (2013-11-26)
 
 * Allow custom HTTP headers when downloading files
