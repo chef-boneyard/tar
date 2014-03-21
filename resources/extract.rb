@@ -23,7 +23,7 @@
 # limitations under the License.
 #
 
-actions :extract
+actions :extract, :extract_local
 
 attribute :source,         :kind_of => String, :name_attribute => true
 attribute :headers,        :kind_of => Hash,   :default => {}

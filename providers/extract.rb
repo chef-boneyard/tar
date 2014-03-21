@@ -48,7 +48,15 @@ action :extract do
     notifies :run, "execute[extract #{basename}]"
   end
 
-  execute "extract #{basename}" do
+  extract_tar(local_archive, new_resource)
+end
+
+action :extract_local do
+  extract_tar(new_resource.name, new_resource)
+end
+
+def extract_tar(local_archive, r)
+  execute "extract #{local_archive}" do
     flags = r.tar_flags ? r.tar_flags.join(' ') : ''
     command "tar xf#{r.compress_char} #{local_archive} #{flags}"
     cwd r.target_dir

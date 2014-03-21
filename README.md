@@ -42,7 +42,8 @@ A `tar_extract` LWRP provides an easy way to download remote tar files and extra
 - :install: Installs the package
 
 `tar_extract`
-- :extract: Extracts the tar file
+- :extract: Extracts the tar file from a url
+- :extract_local: Extracts the tar file from a local file path
 
 # Attribute Parameters
 
@@ -82,3 +83,10 @@ This will download, compile, and install the package from the given URL and inst
 
 This will download the tarball to cache, extract the contents to /opt/myapp/mycode, use the file '/opt/myapp/mycode/bin' to determine idempotency, and pass both '-P' and '--strip-components 1' flags to the tar xzf command.
 
+    tar_extract '/tmp/mycode-1.2.3.tar.gz' do
+      action :extract_local
+      target_dir '/opt/myapp/mycode'
+      creates '/opt/myapp/mycode/lib'
+    end
+
+This will extract the contents of /tmp/mycode-1.2.3.tar.gz to /opt/myapp/mycode and use the file '/opt/myapp/mycode/lib' to determine idempotency.
