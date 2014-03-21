@@ -1,5 +1,9 @@
 # Tar Cookbook Changelog
 
+## v0.3.0 (2014-03-21)
+
+* Add `:extract_local` action
+
 ## v0.2.0 (2013-12-31)
 
 * Make `tar_extract` only run if needed
