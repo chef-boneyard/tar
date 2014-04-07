@@ -38,14 +38,14 @@ action :extract do
     source r.name
     unless r.headers.nil?
       headers r.headers
-    end 
+    end
     path local_archive
     backup false
     action :create
     group  r.group
     owner  r.user
     mode   r.mode
-    notifies :run, "execute[extract #{basename}]"
+    notifies :run, "execute[extract #{local_archive}]"
   end
 
   extract_tar(local_archive, new_resource)
