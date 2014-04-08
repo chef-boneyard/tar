@@ -1,5 +1,9 @@
 # Tar Cookbook Changelog
 
+## v0.3.1 (2014-04-04)
+
+* Correct "notifies" definition in tar_extract's remote_file
+
 ## v0.3.0 (2014-03-21)
 
 * Add `:extract_local` action
