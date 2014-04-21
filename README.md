@@ -81,7 +81,7 @@ This will download, compile, and install the package from the given URL and inst
       tar_flags [ '-P', '--strip-components 1' ]
     end
 
-This will download the tarball to cache, extract the contents to /opt/myapp/mycode, use the file '/opt/myapp/mycode/bin' to determine idempotency, and pass both '-P' and '--strip-components 1' flags to the tar xzf command.
+This will download the tarball to cache, extract the contents to /opt/myapp/mycode, use the file '/opt/myapp/mycode/lib' to determine idempotency, and pass both '-P' and '--strip-components 1' flags to the tar xzf command.
 
     tar_extract '/tmp/mycode-1.2.3.tar.gz' do
       action :extract_local
