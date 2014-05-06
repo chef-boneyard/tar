@@ -39,6 +39,7 @@ action :extract do
     unless r.headers.nil?
       headers r.headers
     end
+    checksum r.checksum
     path local_archive
     backup false
     action :create

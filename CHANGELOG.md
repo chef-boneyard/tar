@@ -1,5 +1,9 @@
 # Tar Cookbook Changelog
 
+## v0.3.2 (2014-05-05)
+
+* Add checksum to remote file downloads
+
 ## v0.3.1 (2014-04-04)
 
 * Correct "notifies" definition in tar_extract's remote_file
