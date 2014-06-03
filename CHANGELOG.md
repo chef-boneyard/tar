@@ -1,5 +1,9 @@
 # Tar Cookbook Changelog
 
+## v0.3.3 (2014-06-03)
+
+* Add ChefSpec matchers
+
 ## v0.3.2 (2014-05-05)
 
 * Add checksum to remote file downloads
