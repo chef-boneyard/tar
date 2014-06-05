@@ -1,5 +1,9 @@
 # Tar Cookbook Changelog
 
+## v0.3.4 (2014-06-05)
+
+* Define ChefSpec::Runner method for tar_extract
+
 ## v0.3.3 (2014-06-03)
 
 * Add ChefSpec matchers
