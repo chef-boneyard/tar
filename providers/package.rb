@@ -29,7 +29,9 @@ action :install do
 
   remote_file basename do
     source r.name
-    headers r.headers
+    unless r.headers.length == 0
+      headers r.headers
+    end
     path "#{src_dir}/#{basename}"
     backup false
     action :create_if_missing
