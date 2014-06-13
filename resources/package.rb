@@ -27,6 +27,7 @@ attribute :prefix,           :kind_of => String
 attribute :source_directory, :kind_of => String, :default => '/usr/local/src'
 attribute :creates,          :kind_of => String
 attribute :configure_flags,  :kind_of => Array,  :default => []
+attribute :archive_name,     :kind_of => String
 
 # Make :install the default action
 def initialize(*args)

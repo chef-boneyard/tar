@@ -54,6 +54,7 @@ A `tar_extract` LWRP provides an easy way to download remote tar files and extra
 - source\_directory: Directory to which source files are download.
 - creates: A file this command creates - if the file exists, the command will not be run.
 - configure\_flags: Array of additional flags to be passed to `./configure`.
+- archive\_name: Specify a different name for the downloaded archive. Use it if the directory name inside the tar file is different than the name defined in the URL.
 
 `tar_extract`
 - source: name attribute. The source remote URL.

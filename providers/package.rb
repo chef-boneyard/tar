@@ -23,13 +23,15 @@ use_inline_resources if defined?(use_inline_resources)
 
 action :install do
   r = new_resource
-  basename = ::File.basename(r.name)
+  basename = r.archive_name || ::File.basename(r.name)
   dirname = basename.chomp('.tar.gz') # Assuming .tar.gz
   src_dir = r.source_directory
 
   remote_file basename do
     source r.name
-    headers r.headers
+    unless r.headers.length == 0
+      headers r.headers
+    end
     path "#{src_dir}/#{basename}"
     backup false
     action :create_if_missing
