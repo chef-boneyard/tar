@@ -1,5 +1,10 @@
 # Tar Cookbook Changelog
 
+## v0.4.0 (2014-06-13)
+
+* Add `archive_name` option for when the file name is different from the
+  package name
+
 ## v0.3.4 (2014-06-05)
 
 * Define ChefSpec::Runner method for tar_extract
