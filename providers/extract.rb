@@ -59,7 +59,18 @@ end
 def extract_tar(local_archive, r)
   execute "extract #{local_archive}" do
     flags = r.tar_flags ? r.tar_flags.join(' ') : ''
-    command "tar xf#{r.compress_char} #{local_archive} #{flags}"
+    extract_command = "tar xf#{r.compress_char} #{local_archive} #{flags}"
+
+    armor_flag = ""
+    if r.encryption_armor 
+       armor_flag = "-a"
+    end 
+    
+    if r.encryption_key_source != nil
+      extract_command = "openssl enc #{armor_flag} -d -pass #{r.encryption_key_source} -#{r.encryption_algorithm} -in #{local_archive} | tar xf#{r.compress_char} - #{flags}" 
+    end
+
+    command extract_command
     cwd r.target_dir
     creates r.creates
     group  r.group
