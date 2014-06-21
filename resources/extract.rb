@@ -36,5 +36,8 @@ attribute :creates,        :kind_of => String
 attribute :compress_char,  :kind_of => String, :default => 'z'
 attribute :tar_flags,      :kind_of => Array,  :default => []
 attribute :user,           :kind_of => String, :default => 'root'
+attribute :encryption_key_source, :kind_of => String
+attribute :encryption_algorithm, :kind_of => String, :default => 'aes-256-cbc'
+attribute :encryption_armor, :kind_of => [TrueClass, FalseClass], :default => true
 
 default_action :extract
