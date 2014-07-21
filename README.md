@@ -49,17 +49,15 @@ A `tar_extract` LWRP provides an easy way to download remote tar files and extra
 
 `tar_package`
 - source: name attribute. The source remote URL.
-- headers: request headers sent when downloading the file (for instance for authentication)
 - prefix: Directory to be used as the `--prefix` configure flag.
 - source\_directory: Directory to which source files are download.
 - creates: A file this command creates - if the file exists, the command will not be run.
 - configure\_flags: Array of additional flags to be passed to `./configure`.
 - archive\_name: Specify a different name for the downloaded archive. Use it if the directory name inside the tar file is different than the name defined in the URL.
+Additionally, `tar_package` supports most `remote_file` [attributes](http://docs.opscode.com/chef/resources.html#id192).
 
 `tar_extract`
 - source: name attribute. The source remote URL.
-- headers: request headers sent when downloading the file (for instance for authentication)
-- checksum: Prevents downloading the file with the same SHA-256 checksum multiple times.
 - target\_dir: Directory to extract into, e.g. tar xzf -C (target_dir)
 - download\_dir: Directory to which tarball is downloaded (defaults to chef cache which requires root `group` and `user`).
 - creates: A file this command creates - if the file exists, the command will not be run.
@@ -67,6 +65,7 @@ A `tar_extract` LWRP provides an easy way to download remote tar files and extra
 - tar\_flags: Array of additional flags to be passed to tar xzf command.
 - group: Group name or group ID to extract the archive under. If set to non-root group, point to a `download_dir` the group has permission to access.
 - user: User name or user ID to extract the archive under. If set to non-root user, point to a `download_dir` the user has permission to access.
+Additionally, `tar_extract` supports most `remote_file` [attributes](http://docs.opscode.com/chef/resources.html#id192).
 
 # Example
 
