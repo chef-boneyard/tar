@@ -22,6 +22,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+require 'shellwords'
 
 use_inline_resources if defined?(use_inline_resources)
 
@@ -59,7 +60,7 @@ end
 def extract_tar(local_archive, r)
   execute "extract #{local_archive}" do
     flags = r.tar_flags ? r.tar_flags.join(' ') : ''
-    command "tar xf#{r.compress_char} #{local_archive} #{flags}"
+    command "tar xf#{r.compress_char} #{local_archive.shellescape} #{flags}"
     cwd r.target_dir
     creates r.creates
     group  r.group
