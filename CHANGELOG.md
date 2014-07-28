@@ -1,5 +1,10 @@
 # Tar Cookbook Changelog
 
+## v0.5.0 (2014-07-28)
+
+* Add support for more attributes of `remote_file`
+* Escape downloaded file names
+
 ## v0.4.0 (2014-06-13)
 
 * Add `archive_name` option for when the file name is different from the
