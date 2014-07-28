@@ -26,7 +26,12 @@ require 'shellwords'
 
 use_inline_resources if defined?(use_inline_resources)
 
+def whyrun_supported?
+  true
+end
+
 action :extract do
+  version = Chef::Version.new(Chef::VERSION[/^(\d+\.\d+\.\d+)/, 1])
   r = new_resource
   basename = ::File.basename(r.name)
   local_archive = "#{r.download_dir}/#{basename}"
@@ -37,9 +42,6 @@ action :extract do
 
   remote_file basename do
     source r.name
-    unless r.headers.nil?
-      headers r.headers
-    end
     checksum r.checksum
     path local_archive
     backup false
@@ -48,6 +50,16 @@ action :extract do
     owner  r.user
     mode   r.mode
     notifies :run, "execute[extract #{local_archive}]"
+    if version.major > 11 || (version.major == 11 && version.minor >= 6)
+      unless r.headers.nil?
+        headers r.headers
+      end
+      use_etag r.use_etag
+      use_last_modified r.use_last_modified
+      atomic_update r.atomic_update
+      force_unlink r.force_unlink
+      manage_symlink_source r.manage_symlink_source
+    end
   end
 
   extract_tar(local_archive, new_resource)

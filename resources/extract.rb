@@ -27,7 +27,6 @@ actions :extract, :extract_local
 
 attribute :source,         :kind_of => String, :name_attribute => true
 attribute :checksum,       :kind_of => String
-attribute :headers,        :kind_of => Hash,   :default => {}
 attribute :download_dir,   :kind_of => String, :default => Chef::Config[:file_backup_path]
 attribute :group,          :kind_of => String, :default => 'root'
 attribute :mode,           :kind_of => String, :default => '0755'
@@ -36,5 +35,15 @@ attribute :creates,        :kind_of => String
 attribute :compress_char,  :kind_of => String, :default => 'z'
 attribute :tar_flags,      :kind_of => Array,  :default => []
 attribute :user,           :kind_of => String, :default => 'root'
+
+version = Chef::Version.new(Chef::VERSION[/^(\d+\.\d+\.\d+)/, 1])
+if version.major > 11 || (version.major == 11 && version.minor >= 6)
+  attribute :headers, :kind_of => Hash, :default => nil
+  attribute :use_etag, :kind_of => [TrueClass, FalseClass], :default => true
+  attribute :use_last_modified, :kind_of => [TrueClass, FalseClass], :default => true
+  attribute :atomic_update, :kind_of => [TrueClass, FalseClass], :default => true
+  attribute :force_unlink, :kind_of => [TrueClass, FalseClass], :default => false
+  attribute :manage_symlink_source, :kind_of => [TrueClass, FalseClass], :default => nil
+end
 
 default_action :extract

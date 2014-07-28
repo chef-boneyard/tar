@@ -29,8 +29,14 @@ attribute :creates,          :kind_of => String
 attribute :configure_flags,  :kind_of => Array,  :default => []
 attribute :archive_name,     :kind_of => String
 
-# Make :install the default action
-def initialize(*args)
-  super
-  @action = :install
+version = Chef::Version.new(Chef::VERSION[/^(\d+\.\d+\.\d+)/, 1])
+if version.major > 11 || (version.major == 11 && version.minor >= 6)
+  attribute :headers, :kind_of => Hash, :default => nil
+  attribute :use_etag, :kind_of => [TrueClass, FalseClass], :default => true
+  attribute :use_last_modified, :kind_of => [TrueClass, FalseClass], :default => true
+  attribute :atomic_update, :kind_of => [TrueClass, FalseClass], :default => true
+  attribute :force_unlink, :kind_of => [TrueClass, FalseClass], :default => false
+  attribute :manage_symlink_source, :kind_of => [TrueClass, FalseClass], :default => nil
 end
+
+default_action :install
