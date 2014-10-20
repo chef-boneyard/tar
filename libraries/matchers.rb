@@ -1,5 +1,5 @@
 if defined?(ChefSpec)
-  ChefSpec::Runner.define_runner_method :tar_extract
+  ChefSpec.define_matcher :tar_extract
 
   def install_tar_package(source)
     ChefSpec::Matchers::ResourceMatcher.new(:tar_package, :install, source)
