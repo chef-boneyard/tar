@@ -71,7 +71,11 @@ end
 
 def extract_tar(local_archive, r)
   execute "extract #{local_archive}" do
-    flags = r.tar_flags ? r.tar_flags.join(' ') : ''
+    if r.tar_flags.kind_of?(String)
+      flags = r.tar_flags
+    else
+      flags = r.tar_flags.join(' ')
+    end
     command "tar xf#{r.compress_char} #{local_archive.shellescape} #{flags}"
     cwd r.target_dir
     creates r.creates
