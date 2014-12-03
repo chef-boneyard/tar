@@ -1,5 +1,9 @@
 # Tar Cookbook Changelog
 
+## v0.6.0 (2014-12-03)
+
+* Allow either string or array for tar flags
+
 ## v0.5.0 (2014-07-28)
 
 * Add support for more attributes of `remote_file`
