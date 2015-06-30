@@ -27,7 +27,7 @@ actions :extract, :extract_local
 
 attribute :source,         :kind_of => String, :name_attribute => true
 attribute :checksum,       :kind_of => String
-attribute :download_dir,   :kind_of => String, :default => Chef::Config[:file_backup_path]
+attribute :download_dir,   :kind_of => String, :default => Chef::Config[:file_cache_path]
 attribute :group,          :kind_of => String, :default => 'root'
 attribute :mode,           :kind_of => String, :default => '0755'
 attribute :target_dir,     :kind_of => String
