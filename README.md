@@ -1,3 +1,7 @@
+*This cookbook is no longer actively maintained and is up for adoption. If you
+would like to take over development, go to https://supermarket.chef.io/cookbooks/tar,
+click the "Adopt me!" button, and you could be the new maintainer of this cookbook!*
+
 DESCRIPTION
 ===========
 
