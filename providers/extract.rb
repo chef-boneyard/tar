@@ -3,11 +3,10 @@
 # Provider:: extract
 #
 # Author:: Nathan L Smith (<nathan@cramerdev.com>)
-# Author:: George Miranda (<gmiranda@opscode.com>)
+# Author:: George Miranda (<gmiranda@chef.io>)
 # Author:: Mark Van de Vyver (<mark@@taqtiqa.com>)
 #
 # Copyright 2011, Cramer Development, Inc.
-# Copyright 2012, Opscode, Inc.
 # Copyright 2013, TAQTIQA LLC.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -70,13 +69,15 @@ action :extract_local do
 end
 
 def extract_tar(local_archive, r)
+  flags = r.tar_flags ? r.tar_flags.join(' ') : ''
+  armor_flag = r.encryption_manner ? "-a" : ""
+  extract_command = "tar xf#{r.compress_char} #{local_archive.shellescape} #{flags}"
+  if r.encryption_passphrase != nil
+    extract_command = "openssl enc #{armor_flag} -d -pass #{r.encryption_passphrase} -#{r.encryption_algorithm} -in #{local_archive} | #{extract_command}"
+  end
+
   execute "extract #{local_archive}" do
-    if r.tar_flags.kind_of?(String)
-      flags = r.tar_flags
-    else
-      flags = r.tar_flags.join(' ')
-    end
-    command "tar xf#{r.compress_char} #{local_archive.shellescape} #{flags}"
+    command extract_command
     cwd r.target_dir
     creates r.creates
     group  r.group

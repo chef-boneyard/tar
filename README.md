@@ -13,13 +13,12 @@ them locally.
 LICENSE AND AUTHOR
 ==================
 
-Author:: Nathan L Smith (<nathan@cramerdev.com>)
-Author:: George Miranda (<gmiranda@opscode.com>)
-Author:: Mark Van de Vyver (<mark@@taqtiqa.com>)
+- Author:: Nathan L Smith (<nathan@cramerdev.com>)
+- Author:: George Miranda (<gmiranda@chef.io>)
+- Author:: Mark Van de Vyver (<mark@taqtiqa.com>)
 
-Copyright 2011, Cramer Development, Inc.
-Copyright 2011, Opscode, Inc.
-Copyright 2013, TAQTIQA LLC.
+Copyright 2011-2015, Cramer Development, Inc.
+Copyright 2013-2015, TAQTIQA LLC.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -52,6 +51,7 @@ A `tar_extract` LWRP provides an easy way to download remote tar files and extra
 # Attribute Parameters
 
 `tar_package`
+
 - source: name attribute. The source remote URL.
 - prefix: Directory to be used as the `--prefix` configure flag.
 - source\_directory: Directory to which source files are download.
@@ -61,6 +61,7 @@ A `tar_extract` LWRP provides an easy way to download remote tar files and extra
 Additionally, `tar_package` supports most `remote_file` [attributes](https://docs.chef.io/chef/resources.html#remote-file).
 
 `tar_extract`
+
 - source: name attribute. The source remote URL.
 - target\_dir: Directory to extract into, e.g. tar xzf -C (target_dir)
 - download\_dir: Directory to which tarball is downloaded (defaults to chef cache which requires root `group` and `user`).
@@ -70,6 +71,10 @@ Additionally, `tar_package` supports most `remote_file` [attributes](https://doc
 - group: Group name or group ID to extract the archive under. If set to non-root group, point to a `download_dir` the group has permission to access.
 - user: User name or user ID to extract the archive under. If set to non-root user, point to a `download_dir` the user has permission to access.
 Additionally, `tar_extract` supports most `remote_file` [attributes](https://docs.chef.io/chef/resources.html#remote-file).
+- encryption_armor: Supports extracting openssl encrypted archives (default: false)
+- encryption_algorithm: Openssl encryption algorithm to use (default: 'aes-256-cbc)
+- encryption_key_source: Passphrase used to unencrypt openssl encrypted archive
+
 
 # Example
 
