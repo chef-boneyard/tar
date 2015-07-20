@@ -70,7 +70,7 @@ end
 
 def extract_tar(local_archive, r)
   flags = r.tar_flags ? r.tar_flags.join(' ') : ''
-  armor_flag = r.encryption_manner ? "-a" : ""
+  armor_flag = r.encryption_armor ? "-a" : ""
   extract_command = "tar xf#{r.compress_char} #{local_archive.shellescape} #{flags}"
   if r.encryption_passphrase != nil
     extract_command = "openssl enc #{armor_flag} -d -pass #{r.encryption_passphrase} -#{r.encryption_algorithm} -in #{local_archive} | #{extract_command}"
