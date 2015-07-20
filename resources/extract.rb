@@ -3,11 +3,10 @@
 # Resource:: extract
 #
 # Author:: Nathan L Smith (<nathan@cramerdev.com>)
-# Author:: George Miranda (<gmiranda@opscode.com>)
+# Author:: George Miranda (<gmiranda@chef.io>)
 # Author:: Mark Van de Vyver (<mark@taqtiqa.com>)
 #
 # Copyright 2011, Cramer Development, Inc.
-# Copyright 2012, Opscode, Inc.
 # Copyright 2013, TAQTIQA LLC.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -44,6 +43,9 @@ if version.major > 11 || (version.major == 11 && version.minor >= 6)
   attribute :atomic_update, :kind_of => [TrueClass, FalseClass], :default => true
   attribute :force_unlink, :kind_of => [TrueClass, FalseClass], :default => false
   attribute :manage_symlink_source, :kind_of => [TrueClass, FalseClass], :default => nil
+  attribute :encryption_armor, :kind_of => [TrueClass, FalseClass], :default => false
+  attribute :encryption_algorithm, :kind_of => String, :default => 'aes-256-cbc'
+  attribute :encryption_passphrase, :kind_of => String
 end
 
 default_action :extract

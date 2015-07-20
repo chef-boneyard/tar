@@ -62,4 +62,3 @@ action :install do
     creates r.creates
   end
 end
-
