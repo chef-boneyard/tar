@@ -96,6 +96,12 @@ This will download the tarball to cache, extract the contents to /opt/myapp/myco
 
 This will extract the contents of /tmp/mycode-1.2.3.tar.gz to /opt/myapp/mycode and use the file '/opt/myapp/mycode/lib' to determine idempotency.
 
+How to add custom parameters to './configure' command
+
+    tar_package 'http://pgfoundry.org/frs/download.php/1446/pgpool-3.4.1.tar.gz' do
+       custom_params '--some-prefix'
+    end
+
 # ChefSpec Matchers
 
 ChefSpec matchers are defined for tar_package and tar_extract.
