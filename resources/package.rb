@@ -26,7 +26,8 @@ attribute :headers,          :kind_of => Hash,   :default => {}
 attribute :prefix,           :kind_of => String
 attribute :source_directory, :kind_of => String, :default => '/usr/local/src'
 attribute :creates,          :kind_of => String
-attribute :configure_flags,  :kind_of => Array,  :default => []
+attribute :configure_flags,  :kind_of => Array,  :default => ['--quiet']
+attribute :make_flags,       :kind_of => Array,  :default => ['--quiet']
 attribute :archive_name,     :kind_of => String
 
 version = Chef::Version.new(Chef::VERSION[/^(\d+\.\d+\.\d+)/, 1])
