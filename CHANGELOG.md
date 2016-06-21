@@ -1,5 +1,9 @@
 # Tar Cookbook Changelog
 
+## v0.7.1 (2016-06-22)
+* Added make_flags
+* Moved '--quiet' to configure_flags default
+
 ## v0.7.0 (2015-07-08)
 
 * Add adoption notice

@@ -56,8 +56,9 @@ action :install do
   end
 
   execute "compile & install #{dirname}" do
-    flags = [r.prefix ? "--prefix=#{r.prefix}" : nil, *r.configure_flags].compact.join(' ')
-    command "./configure --quiet #{flags} && make --quiet && make --quiet install"
+    configure_flags = [r.prefix ? "--prefix=#{r.prefix}" : nil, *r.configure_flags].compact.join(' ')
+    make_flags =  [*r.make_flags].compact.join(' ')
+    command "./configure #{configure_flags} && make #{make_flags} && make #{make_flags} install"
     cwd "#{src_dir}/#{dirname}"
     creates r.creates
   end
