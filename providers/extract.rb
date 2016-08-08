@@ -34,6 +34,8 @@ action :extract do
   version = Chef::Version.new(Chef::VERSION[/^(\d+\.\d+\.\d+)/, 1])
   r = new_resource
   basename = ::File.basename(r.name)
+  extname  = ::File.extname( r.name)
+  r.compress_char = '' if 0 == extname.casecmp('.xz')
   local_archive = "#{r.download_dir}/#{basename}"
 
   directory r.download_dir do
