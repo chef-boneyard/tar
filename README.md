@@ -6,24 +6,15 @@ Installs tar and includes resources for managing remote tar files. `tar_package`
 
 ## Resources
 
+### tar_package
+
 A `tar_package` LWRP provides an easy way to download remote files and compile and install them. This only works for the most basic Autoconf programs that can do `./configure && make && make install`.
 
-A `tar_extract` LWRP provides an easy way to download remote tar files and extract them to a local directory.
-
-### Actions
-
-`tar_package`
+#### Actions
 
 - :install: Installs the package
 
-`tar_extract`
-
-- :extract: Extracts the tar file from a url
-- :extract_local: Extracts the tar file from a local file path
-
-### Attribute Parameters
-
-`tar_package`
+#### Properties
 
 - source: name attribute. The source remote URL.
 - prefix: Directory to be used as the `--prefix` configure flag.
@@ -32,7 +23,27 @@ A `tar_extract` LWRP provides an easy way to download remote tar files and extra
 - configure_flags: Array of additional flags to be passed to `./configure`.
 - archive_name: Specify a different name for the downloaded archive. Use it if the directory name inside the tar file is different than the name defined in the URL. Additionally, `tar_package` supports most `remote_file` [attributes](https://docs.chef.io/chef/resources.html#remote-file).
 
-`tar_extract`
+#### Example
+
+```
+tar_package 'http://pgfoundry.org/frs/download.php/1446/pgpool-3.4.1.tar.gz' do
+  prefix '/usr/local'
+  creates '/usr/local/bin/pgpool'
+end
+```
+
+This will download, compile, and install the package from the given URL and install it into /usr/local.
+
+### tar_extract
+
+A `tar_extract` LWRP provides an easy way to download remote tar files and extract them to a local directory.
+
+#### Actions
+
+- :extract: Extracts the tar file from a url
+- :extract_local: Extracts the tar file from a local file path
+
+#### Properties
 
 - source: name attribute. The source remote URL.
 - target_dir: Directory to extract into, e.g. tar xzf -C (target_dir)
@@ -43,16 +54,7 @@ A `tar_extract` LWRP provides an easy way to download remote tar files and extra
 - group: Group name or group ID to extract the archive under. If set to non-root group, point to a `download_dir` the group has permission to access.
 - user: User name or user ID to extract the archive under. If set to non-root user, point to a `download_dir` the user has permission to access. Additionally, `tar_extract` supports most `remote_file` [attributes](https://docs.chef.io/chef/resources.html#remote-file).
 
-### Example
-
-```
-tar_package 'http://pgfoundry.org/frs/download.php/1446/pgpool-3.4.1.tar.gz' do
-  prefix '/usr/local'
-  creates '/usr/local/bin/pgpool'
-end
-```
-
-This will download, compile, and install the package from the given URL and install it into /usr/local.
+#### Example
 
 ```
 tar_extract 'http://dev.mycoderepo.com/artifacts/mycode-1.2.3.tar.gz' do
