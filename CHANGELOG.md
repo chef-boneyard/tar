@@ -2,6 +2,12 @@
 
 This file is used to list changes made in each version of the tar cookbook.
 
+## 1.1.0 (2016-12-21)
+- added support for .xz compression type
+- Reformat the readme
+- Define both Chefspec matchers
+- Remove Chef 11 compatibility code
+
 ## 1.0.0 (2016-12-21)
 
 - This cookbook has been adopted by Chef and will be maintained by the Community Cookbook Team going forward.
