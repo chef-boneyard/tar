@@ -4,7 +4,7 @@
 #
 # Author:: Nathan L Smith (<nathan@cramerdev.com>)
 #
-# Copyright 2011, Cramer Development, Inc.
+# Copyright:: 2011, Cramer Development, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -38,9 +38,7 @@ action :install do
     backup false
     action :create_if_missing
     if version.major > 11 || (version.major == 11 && version.minor >= 6)
-      unless r.headers.nil?
-        headers r.headers
-      end
+      headers r.headers unless r.headers.nil?
       use_etag r.use_etag
       use_last_modified r.use_last_modified
       atomic_update r.atomic_update
@@ -62,4 +60,3 @@ action :install do
     creates r.creates
   end
 end
-

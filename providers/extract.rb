@@ -3,12 +3,12 @@
 # Provider:: extract
 #
 # Author:: Nathan L Smith (<nathan@cramerdev.com>)
-# Author:: George Miranda (<gmiranda@opscode.com>)
+# Author:: George Miranda (<gmiranda@chef.io>)
 # Author:: Mark Van de Vyver (<mark@@taqtiqa.com>)
 #
-# Copyright 2011, Cramer Development, Inc.
-# Copyright 2012, Opscode, Inc.
-# Copyright 2013, TAQTIQA LLC.
+# Copyright:: 2011, Cramer Development, Inc.
+# Copyright:: 2012-2016, Chef Software, Inc.
+# Copyright:: 2013, TAQTIQA LLC.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -51,9 +51,7 @@ action :extract do
     mode   r.mode
     notifies :run, "execute[extract #{local_archive}]"
     if version.major > 11 || (version.major == 11 && version.minor >= 6)
-      unless r.headers.nil?
-        headers r.headers
-      end
+      headers r.headers unless r.headers.nil?
       use_etag r.use_etag
       use_last_modified r.use_last_modified
       atomic_update r.atomic_update
@@ -71,11 +69,11 @@ end
 
 def extract_tar(local_archive, r)
   execute "extract #{local_archive}" do
-    if r.tar_flags.kind_of?(String)
-      flags = r.tar_flags
-    else
-      flags = r.tar_flags.join(' ')
-    end
+    flags = if r.tar_flags.is_a?(String)
+              r.tar_flags
+            else
+              r.tar_flags.join(' ')
+            end
     command "tar xf#{r.compress_char} #{local_archive.shellescape} #{flags}"
     cwd r.target_dir
     creates r.creates
