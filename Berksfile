@@ -4,4 +4,5 @@ metadata
 
 group :integration do
   cookbook 'yum'
+  cookbook 'test', path: 'test/cookbooks/test'
 end
