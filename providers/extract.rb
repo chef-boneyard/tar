@@ -33,6 +33,8 @@ end
 action :extract do
   r = new_resource
   basename = ::File.basename(r.name)
+  extname  = ::File.extname( r.name)
+  r.compress_char = '' if 0 == extname.casecmp('.xz')
   local_archive = "#{r.download_dir}/#{basename}"
 
   directory r.download_dir do
