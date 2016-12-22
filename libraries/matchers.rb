@@ -1,4 +1,5 @@
 if defined?(ChefSpec)
+  ChefSpec.define_matcher :tar_package
   ChefSpec.define_matcher :tar_extract
 
   def install_tar_package(source)
