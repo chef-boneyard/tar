@@ -19,19 +19,49 @@
 # limitations under the License.
 #
 
-actions :install
-default_action :install
+attribute :source,                String, name_attribute: true
+attribute :headers,               Hash,   default: {}
+attribute :prefix,                String
+attribute :source_directory,      String, default: '/usr/local/src'
+attribute :creates,               String
+attribute :configure_flags,       Array, default: []
+attribute :archive_name,          String
+attribute :headers,               Hash, default: nil
+attribute :use_etag,              [TrueClass, FalseClass], default: true
+attribute :use_last_modified,     [TrueClass, FalseClass], default: true
+attribute :atomic_update,         [TrueClass, FalseClass], default: true
+attribute :force_unlink,          [TrueClass, FalseClass], default: false
+attribute :manage_symlink_source, [TrueClass, FalseClass], default: nil
 
-attribute :source,                kind_of: String, name_attribute: true
-attribute :headers,               kind_of: Hash,   default: {}
-attribute :prefix,                kind_of: String
-attribute :source_directory,      kind_of: String, default: '/usr/local/src'
-attribute :creates,               kind_of: String
-attribute :configure_flags,       kind_of: Array, default: []
-attribute :archive_name,          kind_of: String
-attribute :headers,               kind_of: Hash, default: nil
-attribute :use_etag,              kind_of: [TrueClass, FalseClass], default: true
-attribute :use_last_modified,     kind_of: [TrueClass, FalseClass], default: true
-attribute :atomic_update,         kind_of: [TrueClass, FalseClass], default: true
-attribute :force_unlink,          kind_of: [TrueClass, FalseClass], default: false
-attribute :manage_symlink_source, kind_of: [TrueClass, FalseClass], default: nil
+action :install do
+  r = new_resource
+  basename = r.archive_name || ::File.basename(r.name)
+  dirname = basename.chomp('.tar.gz') # Assuming .tar.gz
+  src_dir = r.source_directory
+
+  remote_file basename do
+    source r.name
+    path "#{src_dir}/#{basename}"
+    backup false
+    headers r.headers unless r.headers.nil?
+    use_etag r.use_etag
+    use_last_modified r.use_last_modified
+    atomic_update r.atomic_update
+    force_unlink r.force_unlink
+    manage_symlink_source r.manage_symlink_source
+    action :create_if_missing
+  end
+
+  execute "extract #{basename}" do
+    command "tar xfz #{basename}"
+    cwd src_dir
+    creates "#{src_dir}/#{dirname}"
+  end
+
+  execute "compile & install #{dirname}" do
+    flags = [r.prefix ? "--prefix=#{r.prefix}" : nil, *r.configure_flags].compact.join(' ')
+    command "./configure --quiet #{flags} && make --quiet && make --quiet install"
+    cwd "#{src_dir}/#{dirname}"
+    creates r.creates
+  end
+end
