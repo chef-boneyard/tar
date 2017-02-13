@@ -33,12 +33,12 @@ property :creates,               String
 property :compress_char,         String, default: 'z'
 property :tar_flags,             [String, Array], default: []
 property :user,                  String, default: 'root'
-property :headers,               Hash, default: nil
+property :headers,               Hash
 property :use_etag,              [TrueClass, FalseClass], default: true
 property :use_last_modified,     [TrueClass, FalseClass], default: true
 property :atomic_update,         [TrueClass, FalseClass], default: true
 property :force_unlink,          [TrueClass, FalseClass], default: false
-property :manage_symlink_source, [TrueClass, FalseClass], default: nil
+property :manage_symlink_source, [TrueClass, FalseClass]
 
 require 'shellwords'
 

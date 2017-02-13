@@ -26,12 +26,12 @@ attribute :source_directory,      String, default: '/usr/local/src'
 attribute :creates,               String
 attribute :configure_flags,       Array, default: []
 attribute :archive_name,          String
-attribute :headers,               Hash, default: nil
+attribute :headers,               Hash
 attribute :use_etag,              [TrueClass, FalseClass], default: true
 attribute :use_last_modified,     [TrueClass, FalseClass], default: true
 attribute :atomic_update,         [TrueClass, FalseClass], default: true
 attribute :force_unlink,          [TrueClass, FalseClass], default: false
-attribute :manage_symlink_source, [TrueClass, FalseClass], default: nil
+attribute :manage_symlink_source, [TrueClass, FalseClass]
 
 action :install do
   r = new_resource
