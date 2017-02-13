@@ -6,3 +6,4 @@ description 'Installs/Configures test'
 version '0.1.0'
 
 depends 'tar'
+depends 'build-essential'
