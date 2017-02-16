@@ -9,6 +9,8 @@ apt_update 'update'
 include_recipe 'tar::default'
 include_recipe 'build-essential::default'
 
+package 'ncurses-devel' if platform_family?('suse') # needed for nano compile
+
 tar_package 'https://www.nano-editor.org/dist/v2.7/nano-2.7.4.tar.gz' do
   prefix '/usr/local'
   creates '/usr/local/bin/nano'
