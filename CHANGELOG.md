@@ -2,7 +2,14 @@
 
 This file is used to list changes made in each version of the tar cookbook.
 
+## 2.0.0 (2017-02-16)
+
+- Converted the existing LWRPs to custom resources and bumped the minimum supported Chef release to 12.5 
+- Add all supported platforms to the metadata
+- Add full testing of the resources in Travis CI
+
 ## 1.1.0 (2016-12-21)
+
 - added support for .xz compression type
 - Reformat the readme
 - Define both Chefspec matchers
