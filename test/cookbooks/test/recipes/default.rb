@@ -17,5 +17,5 @@ end
 tar_extract 'https://www.nano-editor.org/dist/v2.7/nano-2.7.4.tar.gz' do
   target_dir '/usr/local'
   creates '/opt/myapp/mycode/lib'
-  tar_flags [ '-P', '--strip-components 1' ]
+  tar_flags ['-P', '--strip-components 1']
 end
