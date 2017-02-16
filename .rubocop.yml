@@ -1,3 +1,5 @@
+# rubocop todo
+
 Lint/ParenthesesAsGroupedExpression:
   Exclude:
-    - 'providers/extract.rb'
+    - 'resources/extract.rb'
