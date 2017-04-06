@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: tar
+# Cookbook:: tar
 # Recipe:: default
 #
 # Author:: Nathan L Smith (<nathan@cramerdev.com>)

@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: tar
+# Cookbook:: tar
 # Resource:: package
 #
 # Author:: Nathan L Smith (<nathan@cramerdev.com>)
@@ -19,19 +19,19 @@
 # limitations under the License.
 #
 
-attribute :source,                String, name_attribute: true
-attribute :headers,               Hash,   default: {}
-attribute :prefix,                String
-attribute :source_directory,      String, default: '/usr/local/src'
-attribute :creates,               String
-attribute :configure_flags,       Array, default: []
-attribute :archive_name,          String
-attribute :headers,               Hash
-attribute :use_etag,              [TrueClass, FalseClass], default: true
-attribute :use_last_modified,     [TrueClass, FalseClass], default: true
-attribute :atomic_update,         [TrueClass, FalseClass], default: true
-attribute :force_unlink,          [TrueClass, FalseClass], default: false
-attribute :manage_symlink_source, [TrueClass, FalseClass]
+property :source,                String, name_property: true
+property :headers,               Hash,   default: {}
+property :prefix,                String
+property :source_directory,      String, default: '/usr/local/src'
+property :creates,               String
+property :configure_flags,       Array, default: []
+property :archive_name,          String
+property :headers,               Hash
+property :use_etag,              [true, false], default: true
+property :use_last_modified,     [true, false], default: true
+property :atomic_update,         [true, false], default: true
+property :force_unlink,          [true, false], default: false
+property :manage_symlink_source, [true, false]
 
 action :install do
   r = new_resource
