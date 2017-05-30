@@ -78,7 +78,7 @@ action :extract_local do
   extract_tar(new_resource.name, new_resource)
 end
 
-action_class.class_eval do
+action_class do
   def extract_tar(local_archive, r)
     execute "extract #{local_archive}" do
       flags = if r.tar_flags.is_a?(String)
