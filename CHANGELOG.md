@@ -2,6 +2,10 @@
 
 This file is used to list changes made in each version of the tar cookbook.
 
+## 2.1.1 (2017-06-13)
+
+- Fix metadata source and issues links.
+
 ## 2.1.0 (2017-05-30)
 
 - Test with Local Delivery instead of Rake
