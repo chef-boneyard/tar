@@ -26,13 +26,13 @@
 property :source,                String, name_property: true
 property :checksum,              String
 property :download_dir,          String, default: Chef::Config[:file_cache_path]
-property :group,                 String, default: 'root'
+property :group,                 [String, nil], default: 'root'
 property :mode,                  String, default: '0755'
 property :target_dir,            String
 property :creates,               String
 property :compress_char,         String, default: 'z'
 property :tar_flags,             [String, Array], default: []
-property :user,                  String, default: 'root'
+property :user,                  [String, nil], default: 'root'
 property :headers,               Hash
 property :use_etag,              [true, false], default: true
 property :use_last_modified,     [true, false], default: true
