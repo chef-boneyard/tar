@@ -26,7 +26,7 @@
 property :source,                String, name_property: true
 property :checksum,              String
 property :download_dir,          String, default: Chef::Config[:file_cache_path]
-property :group,                 String, default: 'root'
+property :group,                 String, default: node['root_group']
 property :mode,                  String, default: '0755'
 property :target_dir,            String
 property :creates,               String
