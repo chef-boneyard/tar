@@ -19,4 +19,4 @@
 # limitations under the License.
 #
 
-package 'tar'
+package 'tar' unless platform_family?('freebsd')
