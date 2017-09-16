@@ -39,6 +39,10 @@ action :install do
   dirname = basename.chomp('.tar.gz') # Assuming .tar.gz
   src_dir = r.source_directory
 
+  directory src_dir do
+    recursive true
+  end
+
   remote_file basename do
     source r.name
     path "#{src_dir}/#{basename}"
