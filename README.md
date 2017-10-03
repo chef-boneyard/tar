@@ -35,6 +35,7 @@ The `tar_package` resource provides an easy way to download remote files and com
 - `creates`: prevent the command from running when the specified file already exists.
 - `configure_flags`: Array of additional flags to be passed to `./configure`.
 - `archive_name`: Specify a different name for the downloaded archive. Use it if the directory name inside the tar file is different than the name defined in the URL. Additionally, `tar_package` supports most `remote_file` [attributes](https://docs.chef.io/chef/resources.html#remote-file).
+- `checksum`: The checksum of the remote tar file.
 
 #### Example
 
@@ -58,6 +59,7 @@ The `tar_extract` resource provides an easy way to extract tar files from downlo
 
 #### Properties
 
+<<<<<<< HEAD
 - `source`: name attribute. The source remote URL.
 - `target_dir`: Directory to extract into, e.g. tar xzf -C (target_dir)
 - `download_dir`: Directory to which tarball is downloaded (defaults to chef cache which requires root `group` and `user`).
@@ -66,6 +68,17 @@ The `tar_extract` resource provides an easy way to extract tar files from downlo
 - `tar_flags`: Array of additional flags to be passed to tar xzf command.
 - `group`: Group name or group ID to extract the archive under. If set to non-root group, point to a `download_dir` the group has permission to access.
 - `user`: User name or user ID to extract the archive under. If set to non-root user, point to a `download_dir` the user has permission to access. Additionally, `tar_extract` supports most `remote_file` [attributes](https://docs.chef.io/chef/resources.html#remote-file).
+=======
+- source: name attribute. The source remote URL.
+- target_dir: Directory to extract into, e.g. tar xzf -C (target_dir)
+- download_dir: Directory to which tarball is downloaded (defaults to chef cache which requires root `group` and `user`).
+- creates: A file this command creates - if the file exists, the command will not be run.
+- compress_char: Flag for compression type, such as `z` for `gzip`. `man tar` for options.
+- tar_flags: Array of additional flags to be passed to tar xzf command.
+- group: Group name or group ID to extract the archive under. If set to non-root group, point to a `download_dir` the group has permission to access.
+- user: User name or user ID to extract the archive under. If set to non-root user, point to a `download_dir` the user has permission to access. Additionally, `tar_extract` supports most `remote_file` [attributes](https://docs.chef.io/chef/resources.html#remote-file).
+- checksum: The checksum of the remote tar file.
+>>>>>>> Add checksum support to tar_package resource
 
 #### Example
 

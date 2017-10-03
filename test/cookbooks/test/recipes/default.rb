@@ -14,10 +14,12 @@ package 'ncurses-devel' if platform_family?('suse') # needed for nano compile
 tar_package 'https://www.nano-editor.org/dist/v2.8/nano-2.8.7.tar.gz' do
   prefix '/usr/local'
   creates '/usr/local/bin/nano'
+  checksum '23ffc2de52d687739fed6dc2fc94df36aa7da7bb52c8740c523fdd7336fdbc8c'
 end
 
 tar_extract 'https://www.nano-editor.org/dist/v2.8/nano-2.8.7.tar.gz' do
   target_dir '/usr/local/nano_tar_extract'
   creates '/usr/local/nano_tar_extract/configure'
   tar_flags ['-P', '--strip-components 1']
+  checksum '23ffc2de52d687739fed6dc2fc94df36aa7da7bb52c8740c523fdd7336fdbc8c'
 end
