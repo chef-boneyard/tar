@@ -21,7 +21,7 @@
 
 property :source,                String, name_property: true
 property :checksum,              String
-property :headers,               Hash,   default: {}
+property :headers,               Hash, default: {}
 property :prefix,                String
 property :source_directory,      String, default: '/usr/local/src'
 property :creates,               String
