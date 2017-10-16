@@ -99,11 +99,11 @@ ChefSpec matchers are defined for tar_package and tar_extract.
 - **Author:** George Miranda ([gmiranda@chef.io](mailto:gmiranda@chef.io))
 - **Author:** Mark Van de Vyver ([mark@@taqtiqa.com](mailto:mark@@taqtiqa.com))
 
-- **Copyright:** 2011, Cramer Development, Inc.
-- **Copyright:** 2013, TAQTIQA LLC.
-- **Copyright:** 2011-2017, Chef Software, Inc
-
 ```text
+
+**Copyright:** 2011, Cramer Development, Inc.
+**Copyright:** 2013, TAQTIQA LLC.
+**Copyright:** 2011-2017, Chef Software, Inc
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
