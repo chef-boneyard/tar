@@ -18,9 +18,11 @@ platforms:
   - name: debian-8
   - name: debian-9
   - name: fedora-26
-  - name: opensuse-leap-42
+  - name: opensuse-leap-42.2
   - name: ubuntu-14.04
   - name: ubuntu-16.04
+  - name: freebsd-10
+  - name: freebsd-11
 
 suites:
 - name: resources

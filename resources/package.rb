@@ -39,6 +39,10 @@ action :install do
   dirname = basename.chomp('.tar.gz') # Assuming .tar.gz
   src_dir = r.source_directory
 
+  directory src_dir do
+    recursive true
+  end
+
   remote_file basename do
     source r.name
     path "#{src_dir}/#{basename}"
@@ -60,7 +64,7 @@ action :install do
 
   execute "compile & install #{dirname}" do
     flags = [r.prefix ? "--prefix=#{r.prefix}" : nil, *r.configure_flags].compact.join(' ')
-    command "./configure --quiet #{flags} && make --quiet && make --quiet install"
+    command "./configure --quiet #{flags} && make -s && make -s install"
     cwd "#{src_dir}/#{dirname}"
     creates r.creates
   end
