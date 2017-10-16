@@ -4,11 +4,24 @@
 
 Installs tar and includes resources for managing remote tar files. `tar_package` handles remote source package compilation. `tar_extract` handles retrieving remote tar files and extracting them locally.
 
+## Requirements
+
+### Platforms
+
+- Debian / Ubuntu derivatives
+- RHEL and derivatives
+- openSUSE / SUSE Linux Enterprises
+- FreeBSD
+
+### Chef
+
+- Chef 12.7+
+
 ## Resources
 
 ### tar_package
 
-A `tar_package` LWRP provides an easy way to download remote files and compile and install them. This only works for the most basic Autoconf programs that can do `./configure && make && make install`.
+A `tar_package` This resource provides an easy way to download remote files and compile and install them. This only works for the most basic Autoconf programs that can do `./configure && make && make install`.
 
 #### Actions
 
@@ -82,14 +95,25 @@ ChefSpec matchers are defined for tar_package and tar_extract.
 
 ## LICENSE AND AUTHOR
 
-Author:: Nathan L Smith ([nathan@cramerdev.com](mailto:nathan@cramerdev.com)) Author:: George Miranda ([gmiranda@chef.io](mailto:gmiranda@chef.io)) Author:: Mark Van de Vyver ([mark@@taqtiqa.com](mailto:mark@@taqtiqa.com))
+- Author: Nathan L Smith ([nathan@cramerdev.com](mailto:nathan@cramerdev.com))
+- Author: George Miranda ([gmiranda@chef.io](mailto:gmiranda@chef.io))
+- Author: Mark Van de Vyver ([mark@@taqtiqa.com](mailto:mark@@taqtiqa.com))
 
-Copyright 2011, Cramer Development, Inc. Copyright 2011, Opscode, Inc. Copyright 2013, TAQTIQA LLC.
 
-Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
+```text
+Copyright:: 2011, Cramer Development, Inc.
+Copyright:: 2013, TAQTIQA LLC.
+Copyright:: 2011-2017, Chef Software, Inc
 
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
 ```
-http://www.apache.org/licenses/LICENSE-2.0
-```
-
-Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
