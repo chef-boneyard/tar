@@ -101,9 +101,9 @@ ChefSpec matchers are defined for tar_package and tar_extract.
 
 ```text
 
-**Copyright:** 2011, Cramer Development, Inc.
-**Copyright:** 2013, TAQTIQA LLC.
-**Copyright:** 2011-2017, Chef Software, Inc
+Copyright: 2011, Cramer Development, Inc.
+Copyright: 2013, TAQTIQA LLC.
+Copyright: 2011-2017, Chef Software, Inc
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
