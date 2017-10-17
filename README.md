@@ -21,7 +21,7 @@ Installs tar and includes resources for managing remote tar files. `tar_package`
 
 ### tar_package
 
-A `tar_package` This resource provides an easy way to download remote files and compile and install them. This only works for the most basic Autoconf programs that can do `./configure && make && make install`.
+The `tar_package` resource provides an easy way to download remote files and compile and install them. This only works for the most basic Autoconf programs that can do `./configure && make && make install`.
 
 #### Actions
 
@@ -32,7 +32,7 @@ A `tar_package` This resource provides an easy way to download remote files and 
 - `source`: name attribute. The source remote URL.
 - `prefix`: Directory to be used as the `--prefix` configure flag.
 - `source_directory`: Directory to which source files are download.
-- `creates`: A file this command creates - if the file exists, the command will not be run.
+- `creates`: prevent the command from running when the specified file already exists.
 - `configure_flags`: Array of additional flags to be passed to `./configure`.
 - `archive_name`: Specify a different name for the downloaded archive. Use it if the directory name inside the tar file is different than the name defined in the URL. Additionally, `tar_package` supports most `remote_file` [attributes](https://docs.chef.io/chef/resources.html#remote-file).
 
@@ -49,7 +49,7 @@ This will download, compile, and install the package from the given URL and inst
 
 ### tar_extract
 
-A `tar_extract` LWRP provides an easy way to download remote tar files and extract them to a local directory.
+The `tar_extract` resource provides an easy way to extract tar files from downloaded or local files.
 
 #### Actions
 
@@ -61,7 +61,7 @@ A `tar_extract` LWRP provides an easy way to download remote tar files and extra
 - `source`: name attribute. The source remote URL.
 - `target_dir`: Directory to extract into, e.g. tar xzf -C (target_dir)
 - `download_dir`: Directory to which tarball is downloaded (defaults to chef cache which requires root `group` and `user`).
-- `creates`: A file this command creates - if the file exists, the command will not be run.
+- `creates`: prevent the command from running when the specified file already exists.
 - `compress_char`: Flag for compression type, such as `z` for `gzip`. `man tar` for options.
 - `tar_flags`: Array of additional flags to be passed to tar xzf command.
 - `group`: Group name or group ID to extract the archive under. If set to non-root group, point to a `download_dir` the group has permission to access.
