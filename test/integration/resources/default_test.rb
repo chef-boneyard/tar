@@ -30,13 +30,6 @@ end
 control 'tar_extract' do
   impact 1.0
   title 'should extract specified file.'
-  describe directory('/tmp/kitchen/cache') do
-    it { should exist }
-  end
-
-  describe file('/tmp/kitchen/cache/nano-2.8.7.tar.gz') do
-    it { should exist }
-  end
 
   describe directory('/usr/local/nano_tar_extract') do
     it { should exist }
