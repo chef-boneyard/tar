@@ -31,7 +31,7 @@ The `tar_package` resource provides an easy way to download remote files and com
 
 - `source`: name attribute. The source remote URL.
 - `prefix`: Directory to be used as the `--prefix` configure flag.
-- `source_directory`: Directory to which source files are download.
+- `source_directory`: Directory to which source files are downloaded.
 - `creates`: prevent the command from running when the specified file already exists.
 - `configure_flags`: Array of additional flags to be passed to `./configure`.
 - `archive_name`: Specify a different name for the downloaded archive. Use it if the directory name inside the tar file is different than the name defined in the URL. Additionally, `tar_package` supports most `remote_file` [attributes](https://docs.chef.io/chef/resources.html#remote-file).
