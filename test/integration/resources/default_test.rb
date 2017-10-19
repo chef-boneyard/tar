@@ -1,41 +1,47 @@
-control 'tar' do
-  impact 1.0
-  title 'should be installed.'
-  describe command('tar --help') do
-    its('exit_status') { should eq 0 }
+describe 'tar recipe' do
+  it 'installs tar' do
+    command('tar --help') do
+      its('exit_status') { should eq 0 }
+    end
   end
 end
 
-control 'tar_package' do
-  impact 1.0
-  title 'should download remote file, extract, compile and install.'
-
-  describe directory('/usr/local/src') do
-    it { should exist }
+describe 'resource tar_package' do
+  it 'creates a source directory to extract to if one doesn\'t exist.' do
+    directory('/usr/local/src') do
+      it { should exist }
+    end
   end
 
-  describe file('/usr/local/src/nano-2.8.7.tar.gz') do
-    it { should exist }
+  it 'downloads the archive file to the source directory.' do
+    file('/usr/local/src/nano-2.8.7.tar.gz') do
+      it { should exist }
+    end
   end
 
-  describe directory('/usr/local/src/nano-2.8.7') do
-    it { should exist }
+  it 'extracts the contents of the archive file.' do
+    directory('/usr/local/src/nano-2.8.7') do
+      it { should exist }
+    end
   end
 
-  describe file('/usr/local/bin/nano') do
-    it { should exist }
+  it 'compiles and install the executable.' do
+    file('/usr/local/bin/nano') do
+      it { should exist }
+    end
   end
 end
 
-control 'tar_extract' do
-  impact 1.0
-  title 'should extract specified file.'
-
-  describe directory('/usr/local/nano_tar_extract') do
-    it { should exist }
+describe 'resource tar_extract' do
+  it 'creates a target directory to extract to if one doesn\'t exist.' do
+    directory('/usr/local/nano_tar_extract') do
+      it { should exist }
+    end
   end
 
-  describe file('/usr/local/nano_tar_extract/Makefile.am') do
-    it { should exist }
+  it 'extracts the contents of the archive file.' do
+    file('/usr/local/nano_tar_extract/Makefile.am') do
+      it { should exist }
+    end
   end
 end
