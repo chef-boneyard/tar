@@ -7,7 +7,7 @@
 apt_update 'update'
 
 include_recipe 'tar::default'
-include_recipe 'build-essential::default'
+build_essential 'install compilation tools'
 
 package 'ncurses-devel' if platform_family?('suse') # needed for nano compile
 
