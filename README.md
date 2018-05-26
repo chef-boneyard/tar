@@ -89,10 +89,6 @@ end
 
 This will extract the contents of /tmp/mycode-1.2.3.tar.gz to /opt/myapp/mycode and use the file '/opt/myapp/mycode/lib' to determine idempotency.
 
-## ChefSpec Matchers
-
-ChefSpec matchers are defined for tar_package and tar_extract.
-
 ## LICENSE AND AUTHOR
 
 - **Author:** Nathan L Smith ([nathan@cramerdev.com](mailto:nathan@cramerdev.com))

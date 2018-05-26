@@ -21,7 +21,6 @@ env:
   matrix:
   - INSTANCE=resources-centos-6
   - INSTANCE=resources-centos-7
-  - INSTANCE=resources-debian-7
   - INSTANCE=resources-debian-8
   - INSTANCE=resources-debian-9
   - INSTANCE=resources-fedora-latest
