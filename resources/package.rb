@@ -20,7 +20,8 @@
 #
 
 property :source,                String, name_property: true
-property :headers,               Hash,   default: {}
+property :checksum,              String
+property :headers,               Hash, default: {}
 property :prefix,                String
 property :source_directory,      String, default: '/usr/local/src'
 property :creates,               String
@@ -45,6 +46,7 @@ action :install do
 
   remote_file basename do
     source r.name
+    checksum r.checksum
     path "#{src_dir}/#{basename}"
     backup false
     headers r.headers unless r.headers.nil?
