@@ -54,7 +54,7 @@ action :extract do
   end
 
   remote_file basename do
-    source r.name
+    source r.source
     checksum r.checksum
     path local_archive
     backup false
