@@ -44,7 +44,7 @@ action :install do
   end
 
   remote_file basename do
-    source r.name
+    source r.source
     path "#{src_dir}/#{basename}"
     backup false
     headers r.headers unless r.headers.nil?
