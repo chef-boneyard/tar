@@ -31,6 +31,7 @@ property :mode,                  String, default: '0755'
 property :target_dir,            String
 property :creates,               String
 property :compress_char,         String, default: 'z'
+property :tar_binary,            String, default: 'tar'
 property :tar_flags,             [String, Array], default: []
 property :user,                  String, default: 'root'
 property :headers,               Hash
@@ -87,7 +88,7 @@ action_class do
               else
                 r.tar_flags.join(' ')
               end
-      command "tar xf#{r.compress_char} #{local_archive.shellescape} #{flags}"
+      command "#{r.tar_binary} xf#{r.compress_char} #{local_archive.shellescape} #{flags}"
       cwd r.target_dir
       creates r.creates
       group  r.group

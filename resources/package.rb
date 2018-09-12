@@ -24,6 +24,7 @@ property :headers,               Hash,   default: {}
 property :prefix,                String
 property :source_directory,      String, default: '/usr/local/src'
 property :creates,               String
+property :tar_binary,            String, default: 'tar'
 property :configure_flags,       Array, default: []
 property :archive_name,          String
 property :headers,               Hash
@@ -57,7 +58,7 @@ action :install do
   end
 
   execute "extract #{basename}" do
-    command "tar xfz #{basename}"
+    command "#{r.tar_binary} xfz #{basename}"
     cwd src_dir
     creates "#{src_dir}/#{dirname}"
   end
