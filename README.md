@@ -35,6 +35,7 @@ The `tar_package` resource provides an easy way to download remote files and com
 - `creates`: prevent the command from running when the specified file already exists.
 - `configure_flags`: Array of additional flags to be passed to `./configure`.
 - `archive_name`: Specify a different name for the downloaded archive. Use it if the directory name inside the tar file is different than the name defined in the URL. Additionally, `tar_package` supports most `remote_file` [attributes](https://docs.chef.io/chef/resources.html#remote-file).
+- `tar_binary`: Specify the path to the tar binary, if "tar" is insufficient.
 
 #### Example
 
@@ -66,6 +67,7 @@ The `tar_extract` resource provides an easy way to extract tar files from downlo
 - `tar_flags`: Array of additional flags to be passed to tar xzf command.
 - `group`: Group name or group ID to extract the archive under. If set to non-root group, point to a `download_dir` the group has permission to access.
 - `user`: User name or user ID to extract the archive under. If set to non-root user, point to a `download_dir` the user has permission to access. Additionally, `tar_extract` supports most `remote_file` [attributes](https://docs.chef.io/chef/resources.html#remote-file).
+- `tar_binary`: Specify the path to the tar binary, if "tar" is insufficient.
 
 #### Example
 
