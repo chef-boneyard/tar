@@ -36,8 +36,9 @@ property :manage_symlink_source, [true, false]
 
 action :install do
   r = new_resource
-  basename = r.archive_name || ::File.basename(r.name)
-  dirname = basename.chomp('.tar.gz') # Assuming .tar.gz
+  basename = ::File.basename(r.name)
+  dirname = r.archive_name || ::File.basename(r.name)
+  dirname = dirname.chomp('.tar.gz') # Assuming .tar.gz
   src_dir = r.source_directory
 
   directory src_dir do
