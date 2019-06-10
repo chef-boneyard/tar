@@ -4,6 +4,10 @@
 
 Installs tar and includes resources for managing remote tar files. `tar_package` handles remote source package compilation. `tar_extract` handles retrieving remote tar files and extracting them locally.
 
+## Deprecated
+
+Chef 15 now ships with a built-in `archive_file` resource which handles many archive formats including tar. This new built-in resource should be used instead of this cookbook, which will no longer receive additional updates.
+
 ## Requirements
 
 ### Platforms
