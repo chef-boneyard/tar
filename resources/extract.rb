@@ -81,7 +81,10 @@ end
 
 action_class do
   def extract_tar(local_archive, r)
-    directory r.target_dir
+    directory r.target_dir do
+      group r.group
+      owner r.user
+    end
     execute "extract #{local_archive}" do
       flags = if r.tar_flags.is_a?(String)
                 r.tar_flags
