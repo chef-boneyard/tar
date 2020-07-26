@@ -30,7 +30,7 @@ property :group,                 String, default: node['root_group']
 property :mode,                  String, default: '0755'
 property :target_dir,            String
 property :creates,               String
-property :compress_char,         String, default: 'z'
+property :compress_char,         String, default: ''
 property :tar_binary,            String, default: 'tar'
 property :tar_flags,             [String, Array], default: []
 property :user,                  String, default: 'root'

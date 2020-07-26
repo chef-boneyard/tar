@@ -67,7 +67,7 @@ The `tar_extract` resource provides an easy way to extract tar files from downlo
 - `target_dir`: Directory to extract into, e.g. tar xzf -C (target_dir)
 - `download_dir`: Directory to which tarball is downloaded (defaults to chef cache which requires root `group` and `user`).
 - `creates`: prevent the command from running when the specified file already exists.
-- `compress_char`: Flag for compression type, such as `z` for `gzip`. `man tar` for options.
+- `compress_char`: Flag for compression type, such as `z` for `gzip`. `man tar` for options. Defaults to empty string for auto-detection.
 - `tar_flags`: Array of additional flags to be passed to tar xzf command.
 - `group`: Group name or group ID to extract the archive under. If set to non-root group, point to a `download_dir` the group has permission to access.
 - `user`: User name or user ID to extract the archive under. If set to non-root user, point to a `download_dir` the user has permission to access. Additionally, `tar_extract` supports most `remote_file` [attributes](https://docs.chef.io/chef/resources.html#remote-file).
